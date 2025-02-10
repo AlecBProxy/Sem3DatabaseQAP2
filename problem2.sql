@@ -74,17 +74,20 @@ INSERT INTO order_items (order_id, product_id, quantity)
 
 -- Problem #2 "Write SQL Queries"
 
+SELECT product_name, stock_quantity FROM products;
 
+SELECT product_id, quantity FROM order_items WHERE order_id = 1;
+SELECT product_name FROM products WHERE id IN (1, 3);
 
--- Tasks
--- Write SQL Queries:
+SELECT id FROM orders WHERE customer_id = 1;
+SELECT product_id, quantity FROM order_items WHERE order_id IN (1, 5);
 
--- Retrieve the names and stock quantities of all products.
--- Retrieve the product names and quantities for one of the orders placed.
--- Retrieve all orders placed by a specific customer (including the ID’s of what was ordered and the quantities).
--- Update Data:
+-- This is simulating the reduction for order 1
+UPDATE products
+SET stock_quantity = stock_quantity - 1 (
+    SELECT quantity FROM order_items WHERE product_id = products.id AND order_id = 1
+)
+WHERE id IN (SELECT product_id FROM order_items WHERE order_id = 1);
 
--- Perform an update to simulate the reducing of stock quantities of items after a customer places an order. Please describe or indicate which order you are simulating the reducton for
--- Delete Data:
-
--- Remove one of the orders and all associated order items from the system.
+DELETE FROM order_items WHERE order_id = 1;
+DELETE FROM orders WHERE id = 1;
