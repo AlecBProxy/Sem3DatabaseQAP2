@@ -9,21 +9,21 @@ CREATE TABLE products (
     product_name VARCHAR(90) NOT NULL,
     price DECIMAL (10,2) NOT NULL,
     stock_quantity INT NOT NULL
-)
+);
 
 CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(40) NOT NULL,
     last_name VARCHAR(40) NOT NULL,
     email VARCHAR(100) NOT NULL
-)
+);
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(id)
-)
+);
 
 CREATE TABLE order_items (
     order_id INT NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id) REFERENCES products(id),
     quantity INT NOT NULL,
     PRIMARY KEY (order_id, product_id)
-)
+);
 
 -- Problem #2 "insert data "
 
@@ -49,7 +49,7 @@ VALUES
 ('Jimmy', 'Butler', 'JB22@gmail.com'),
 ('Steph', 'Curry', 'SC30@gmail.com'),
 ('Tony', 'Parker', 'TP09@gmail.com'),
-('Kyrie', 'Irving', 'KI11@gmail.com')
+('Kyrie', 'Irving', 'KI11@gmail.com');
 
 INSERT INTO orders (customer_id, order_date)
 VALUES
@@ -57,7 +57,7 @@ VALUES
 (2, '2025-01-02'),
 (3, '2025-01-03'),
 (4, '2025-01-04'),
-(1, '2025-01-05')
+(1, '2025-01-05');
 
 INSERT INTO order_items (order_id, product_id, quantity)
 VALUES
@@ -75,7 +75,7 @@ VALUES
 (4, 2, 3),
 
 (5, 3, 1), 
-(5, 4, 1)
+(5, 4, 1);
 
 -- Problem #2 "Write SQL Queries"
 

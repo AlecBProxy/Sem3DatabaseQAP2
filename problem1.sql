@@ -10,14 +10,14 @@ CREATE TABLE students (
     last_name VARCHAR (40) NOT NULL,
     email VARCHAR (100) NOT NULL,
     school_enrollment_date DATE NOT NULL
-)
+);
 
 CREATE TABLE professors (
     professor_id SERIAL PRIMARY KEY,
     first_name VARCHAR(40) NOT NULL,
     last_name VARCHAR(40) NOT NULL,
     department VARCHAR(40) NOT NULL
-)
+);
 
 CREATE TABLE courses (
     course_id SERIAL PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE courses (
     course_description TEXT NOT NULL,
     professor_id INT NOT NULL,
     FOREIGN KEY (professor_id) REFERENCES professors(professor_id)
-)
+);
 
 CREATE TABLE enrollments (
     student_id INT NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE enrollments (
     enrollment_date DATE NOT NULL,
     PRIMARY KEY (student_id, course_id)
 
-)
+);
 
 -- Problem #1 "insert data"
 
@@ -52,13 +52,13 @@ VALUES
 ('Hakeem', 'Olajuwon', 'Math'),
 ('Clyde', 'Drexler', 'Physics'),
 ('Ralph', 'Sampson', 'Chemistry'),
-('Tracy', 'McGrady', 'English')
+('Tracy', 'McGrady', 'English');
 
 INSERT INTO courses (course_name, course_description, professor_id)
 VALUES
 ('Math 101', 'Rudimentary Algebra', 1),
 ('Physics 101', 'Intro to Physics', 2),
-('Chemistry 101', 'Intro to Chemistry', 3)
+('Chemistry 101', 'Intro to Chemistry', 3);
 
 INSERT INTO enrollments (student_id, course_id, enrollment_date)
 VALUES
@@ -66,7 +66,7 @@ VALUES
 (2, 2, '2025-01-04'),
 (3, 3, '2025-01-03'),
 (4, 1, '2025-01-04'),
-(5, 2, '2025-01-05')
+(5, 2, '2025-01-05');
 
 -- Problem #1 "Write SQL Queries"
 
